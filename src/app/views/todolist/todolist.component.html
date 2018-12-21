@@ -1,0 +1,68 @@
+<p>
+  todolist works!
+</p>
+<h6>Create Todo:</h6>
+<form (ngSubmit)="onSubmit()" #todoForm="ngForm">
+  <div class="inputData">
+    <div>
+        <input 
+          type="text" 
+          placeholder="Description"
+          id="description"
+          [(ngModel)]="model.description"
+          name="description"
+          #description="ngModel">
+    </div>
+    <div class="col-auto">
+      <input 
+        type="text" 
+        placeholder="AssignedTo"
+        id="assignedTo"
+        [(ngModel)]="model.assignedTo"
+        name="responsible"
+        #assignedTo="ngModel">
+    </div>
+    <div>
+      <select 
+        id="priority"
+        [(ngModel)]="model.priority"
+        name="priority"
+        #priority="ngModel">
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+    </div>
+    <div>
+      <button type="submit">Create</button>
+    </div>
+  </div>
+</form>
+<div *ngIf="(todos | async).length > 0"> 
+<table>
+	<tr>
+		<th>
+			ID
+		</th>
+		<th>
+			Description
+		</th>
+		<th>
+			Assigned To
+		</th>
+		<th>
+			Priority
+		</th>
+		<th>
+			State
+		</th>
+	</tr>
+	<tr *ngFor="let todo of todos | async">
+		<td>{{todo.id}}</td>
+		<td>{{todo.description}}</td>
+		<td>{{todo.assignedTo}}</td>
+		<td>{{todo.priority}}</td>
+		<td>{{todo.isCompleted}}</td>
+	</tr>
+</table>
+</div>

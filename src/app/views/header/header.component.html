@@ -1,0 +1,5 @@
+<h1>
+	Welcome to {{ title }}!<!--  ======= {{inputParam.count}}! -->
+</h1>
+<input type="button" value="Remove All" (click)="removeAll()">
+<span>Last Updated : {{(lastUpdate | async ) | date:'mediumTime' }}</span>
